@@ -1,38 +1,15 @@
-package com.kanyideveloper.hoversdkdemo
+## HoverSDKDemo
+Hover SDK is an Android SDK that lets mobile developers to add money features to the applications. This SDK does not require an internet connection, it automates USSD sessions under the hood of an android application.
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import com.hover.sdk.api.Hover
-import com.hover.sdk.api.HoverParameters
-import com.kanyideveloper.hoversdkdemo.databinding.ActivityMainBinding
+## What is an Action
+An Action depicts a path that one follows while using USSD codes. When you create an action, Hover uses it to navigate to the devices USSD menu.
 
-class MainActivity : AppCompatActivity() {
+## Init Hover
+`Hover.initialize(this)`
 
-    private val TAG = "MainActivity"
-
-    private lateinit var binding: ActivityMainBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        Hover.initialize(this)
-
-        binding.buttonSend.setOnClickListener {
-            if (binding.editTextPhoneNumber.text.toString()
-                    .isEmpty() || binding.editTextAmount.text.toString().isEmpty()
-            ) {
-                Toast.makeText(
-                    this,
-                    "Please Input both the phone Number and Amount",
-                    Toast.LENGTH_SHORT
-                ).show()
-                return@setOnClickListener
-            }
+## Run the USSD Session
+```kotlin
+binding.buttonSend.setOnClickListener {
             try {
                 val intent = HoverParameters.Builder(this)
                     .request("14c45f2e")  //Action ID
@@ -45,12 +22,15 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "Hover Error", Toast.LENGTH_SHORT).show()
             }
         }
-    }
+```
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+## Listen for USSD Information
+```kotlin
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         try {
             if (requestCode == 0 && resultCode == RESULT_OK) {
+
                 Toast.makeText(
                     this,
                     "You will receive an MPESA Confirmation message shortly",
@@ -66,5 +46,6 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "onActivityResult: ${e.localizedMessage}")
         }
     }
-}
+```
 
+## Demo
