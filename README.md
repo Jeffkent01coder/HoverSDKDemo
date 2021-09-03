@@ -1,8 +1,5 @@
 ## HoverSDKDemo
-Hover SDK is an Android SDK that lets mobile developers to add money features to the applications. This SDK does not require an internet connection, it automates USSD sessions under the hood of an android application.
-
-## What is an Action
-An Action depicts a path that one follows while using USSD codes. When you create an action, Hover uses it to navigate to the devices USSD menu.
+Hover helps developers automate USSD sessions in the background of Android applications. Our Android SDK can run virtually any USSD interaction on any mobile operator anywhere in the world. This includes payments, airtime topup, bill pay and more.
 
 ## Init Hover
 `Hover.initialize(this)`
