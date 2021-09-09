@@ -1,6 +1,17 @@
 ## HoverSDKDemo
 Hover helps developers automate USSD sessions in the background of Android applications. Our Android SDK can run virtually any USSD interaction on any mobile operator anywhere in the world. This includes payments, airtime topup, bill pay and more.
 
+
+>Note: Remember to create your own Hover app on the Hover SDK and create your action with steps
+You'll replace here with your ActionID
+```kotlin
+val intent = HoverParameters.Builder(this)
+                    .request("ActionID")  //Action ID
+                    .extra("phoneNumber", binding.editTextPhoneNumber.text.toString().trim())
+                    .extra("amount", binding.editTextAmount.text.toString().trim())
+                    .buildIntent()
+```
+
 ## Init Hover
 `Hover.initialize(this)`
 
@@ -46,6 +57,13 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 ```
 
 ## Demo
-https://user-images.githubusercontent.com/50293753/131500844-7ad54f1b-60df-4632-bfe6-3ad145a0e632.mp4
+<p float="left">
+<img src="screenshots/Screenshot_20210909-053905.png" width=250/>
+<img src="screenshots/Screenshot_20210909-054006.png" width=250/>
+<img src="screenshots/Screenshot_20210909-054022.png" width=250/>
+<img src="screenshots/Screenshot_20210909-054038.png" width=250/>
+<img src="screenshots/Screenshot_20210909-054259.png" width=250/>
+  </p>
+
 
 

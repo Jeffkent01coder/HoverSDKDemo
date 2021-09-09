@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             }
             try {
                 val intent = HoverParameters.Builder(this)
-                    .request("14c45f2e")  //Action ID
+                    .request("ActionID")  //Action ID
                     .extra("phoneNumber", binding.editTextPhoneNumber.text.toString().trim())
                     .extra("amount", binding.editTextAmount.text.toString().trim())
                     .buildIntent()
